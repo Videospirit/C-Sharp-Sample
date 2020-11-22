@@ -30,6 +30,7 @@ namespace Assignment_2
         public int getEventId() { return eventId; }
         public string getEventName() { return eventName; }
         public string getVenue() { return venue; }
+        public Date getDate() { return eventDate; }
 
         public int getMaxAttendees() { return maxAttendees; }
         public int getNumAttendees() { return numAttendees; }
@@ -66,7 +67,7 @@ namespace Assignment_2
             string s = "\nCustomers registered :";
             for (int x = 0; x < numAttendees; x++)
             {
-                s = s + "\n" + attendeeList[x].getFirstName() + " " + attendeeList[x].getLastName();
+                s = s + "\n " + attendeeList[x].getId() + "\n" + attendeeList[x].getFirstName() + " " + attendeeList[x].getLastName() ;
             }
             return s;
         }
