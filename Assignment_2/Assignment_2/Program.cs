@@ -6,6 +6,30 @@ namespace Assignment_2
     {
         static EventCoordinator eCoord;
 
+        public static void addRSVP()
+        {
+            int cid, eid;
+            Console.Clear();
+            Console.WriteLine(eCoord.customerList());
+            Console.WriteLine(eCoord.eventList());
+
+            Console.WriteLine("-----------Add RSVP----------");
+            Console.Write("Please enter the id of the customer:");
+            cid = getIntChoice();
+            Console.Write("Please enter the id of the event:");
+            eid = getIntChoice();
+            if (eCoord.addRSVP(cid,eid))
+            {
+                Console.WriteLine("RSVP successfully added..");
+            }
+            else
+            {
+                Console.WriteLine("The RSVP was not possible, please recheck you entered the correct id and the event is not fully booked..");
+            }
+            Console.WriteLine("\nPress any key to continue return to the main menu.");
+            Console.ReadKey();
+        }
+
         public static void deleteCustomer()
         {
             int id;
@@ -219,13 +243,12 @@ namespace Assignment_2
             int choice = getValidChoice(3, menu);
             while (choice != 3)
             {
-                if (choice == 1) { }
+                if (choice == 1) { addRSVP(); }
                 if (choice == 2) { }
 
                 choice = getValidChoice(3, menu);
             }
         }
-
 
         public static int getValidChoice(int max, string menu)
         {
