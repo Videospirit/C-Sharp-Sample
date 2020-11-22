@@ -8,11 +8,13 @@ namespace Assignment_2
     {
         CustomerManager custMan;
         EventManager eventMan;
+        RSVPManager RSVPMan;
 
         public EventCoordinator(int custIdSeed, int maxCust, int eventIdSeed, int maxEvents)
         {
             custMan = new CustomerManager(custIdSeed, maxCust);
             eventMan = new EventManager(eventIdSeed, maxEvents);
+            RSVPMan = new RSVPManager();
         }
 
         //customer related methods
@@ -38,7 +40,12 @@ namespace Assignment_2
         // Event related methods
         public bool addEvent(string name, string venue, Date eventDate, int maxAttendee)
         {
-            return eventMan.addEvent(name, venue, eventDate, maxAttendee);
+            bool status = eventMan.addEvent(name, venue, eventDate, maxAttendee);
+            if (status)
+            {
+                RSVPMan.alterMax(maxAttendee);
+            }
+            return status;
         }
 
         public string eventList()
@@ -49,6 +56,23 @@ namespace Assignment_2
         public string getEventInfoById(int id)
         {
             return eventMan.getEventInfo(id);
+        }
+
+        //RSVP related methods
+
+        public bool addRSVP(int cid, int eid)
+        {
+            if (custMan.customerExist(cid) && eventMan.eventExists(eid))
+            {
+                Event e = eventMan.getEvent(eid);
+                Customer c = custMan.getCustomer(cid);
+                if (e.addAttendee(c))
+                {
+                    RSVPMan.addRSVP(e,c);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
