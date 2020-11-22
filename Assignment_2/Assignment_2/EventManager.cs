@@ -19,9 +19,13 @@ namespace Assignment_2
             eventList = new Event[maxEvents];
         }
 
-        public bool addEvent(string name, string venue, Date eventDate, int maxAttendees)
+         public bool addEvent(string name, string venue, Date eventDate, int maxAttendees)
         {
-            if (numEvents >= maxEvents) { return false; }
+            for(int i = 0; i < numEvents; i++)
+            {
+                if (numEvents >= maxEvents || eventDate.ToString() == eventList[i].getDate().ToString() && venue == eventList[i].getVenue()) { return false; }
+            }
+            
             Event e = new Event(currentEventId, name, venue, eventDate, maxAttendees);
             eventList[numEvents] = e;
             numEvents++;
