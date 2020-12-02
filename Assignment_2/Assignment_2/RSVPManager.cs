@@ -72,5 +72,14 @@ namespace Assignment_2
             return true;
         }
 
+        public string getRsvpList()
+        {
+            string s = "Rsvp List:";
+            for (int x = 0; x < numRSVP; x++)
+            {
+                s = s + "\n" + RSVPList[x].getDate() + RSVPList[x].getID() + " \t " + RSVPList[x].getCustomer().getFirstName() + " \t " + RSVPList[x].getCustomer().getLastName() + " \t " + RSVPList[x].getEvent().getEventId();
+            }
+            return s;
+        }
     }
 }

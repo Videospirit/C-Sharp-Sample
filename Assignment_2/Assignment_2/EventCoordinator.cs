@@ -74,5 +74,10 @@ namespace Assignment_2
             }
             return false;
         }
+
+        public string rsvpList()
+        {
+            return RSVPMan.getRsvpList();
+        }
     }
 }

@@ -136,6 +136,13 @@ namespace Assignment_2
             Console.ReadKey();
         }
 
+        public static void viewRsvps()
+        {
+            Console.Clear();
+            Console.WriteLine(eCoord.rsvpList());
+            Console.WriteLine("\nPress any key to continue return to the main menu.");
+            Console.ReadKey();
+        }
 
         public static void viewEvents()
         {
@@ -203,7 +210,7 @@ namespace Assignment_2
             s += "Please select a choice from the menu below:\n";
             s += "1: Customer Options \n";
             s += "2: Event Options \n";
-            s += "3: RSVP for Event \n";
+            s += "3: RSVP Options \n";
             s += "4: Exit";
             return s;
         }
@@ -244,7 +251,7 @@ namespace Assignment_2
             while (choice != 3)
             {
                 if (choice == 1) { addRSVP(); }
-                if (choice == 2) { }
+                if (choice == 2) { viewRsvps(); }
 
                 choice = getValidChoice(3, menu);
             }
